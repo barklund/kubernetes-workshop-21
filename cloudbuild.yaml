@@ -3,7 +3,7 @@ steps:
   args: ['build', '-t', 'gcr.io/kubernetes-workshop-235208/github.com/barklund/kubernetes-workshop-21:$COMMIT_SHA', '.']
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'gcr.io/kubernetes-workshop-235208/github.com/barklund/kubernetes-workshop-21:$COMMIT_SHA']
-- name: 'barklund/render'
+- name: 'kevinsimper/render'
   entrypoint: 'bash'
   args:
   - '-c'
