@@ -13,5 +13,5 @@ steps:
 - name: 'gcr.io/cloud-builders/kubectl'
   args: ['apply', '-f', '/workspace/deployment.yaml']
   env:
-  - 'CLOUDSDK_COMPUTE_ZONE=europe-west4-a'
-  - 'CLOUDSDK_CONTAINER_CLUSTER=staging'
+  - 'CLOUDSDK_COMPUTE_ZONE=europe-west4-c'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=standard-cluster-1'
