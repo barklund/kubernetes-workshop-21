@@ -11,7 +11,7 @@ steps:
       /render -f /workspace/deployment.yaml -var sha=$COMMIT_SHA -o /workspace
       cat /workspace/workspace/deployment.yaml
 - name: 'gcr.io/cloud-builders/kubectl'
-  args: ['apply', '-f', '/workspace/workspace/deployment.yaml']
+  args: ['apply', '-f', '/workspace/deployment.yaml']
   env:
   - 'CLOUDSDK_COMPUTE_ZONE=europe-west4-a'
   - 'CLOUDSDK_CONTAINER_CLUSTER=staging'
