@@ -1,0 +1,17 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/kubernetes-workshop-235208/github.com/barklund/kubernetes-workshop-21:$COMMIT_SHA', '.']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/kubernetes-workshop-235208/github.com/barklund/kubernetes-workshop-21:$COMMIT_SHA']
+- name: 'barklund/render'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+      /render -f /workspace/deployment.yml -var sha=$COMMIT_SHA -o /workspace
+      cat /workspace/workspace/deployment.yml
+- name: 'gcr.io/cloud-builders/kubectl'
+  args: ['apply', '-f', '/workspace/workspace/deployment.yml']
+  env:
+  - 'CLOUDSDK_COMPUTE_ZONE=europe-west4-a'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=staging'
