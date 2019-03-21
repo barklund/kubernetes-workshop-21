@@ -8,8 +8,8 @@ steps:
   args:
   - '-c'
   - |
-      /render -f /workspace/deployment.yaml -var sha=$COMMIT_SHA -o /workspace
-      cat /workspace/workspace/deployment.yaml
+      /render -f /deployment.yaml -var sha=$COMMIT_SHA -o /workspace
+      cat /workspace/deployment.yaml
 - name: 'gcr.io/cloud-builders/kubectl'
   args: ['apply', '-f', '/workspace/deployment.yaml']
   env:
